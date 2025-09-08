@@ -1,20 +1,24 @@
 from typing import List
-def encontrar_indices(frase: str, letra: str) -> List[int]:
+
+def encontrar_indices(frase: str, cadena: str) -> List[int]:
     """
-    Encuentra todas las posiciones de una letra en una frase.
+    Encuentra todas las posiciones de una cadena (letra o subcadena) en una frase.
 
     Parámetros:
         frase (str): Texto donde se buscará.
-        letra (str): Letra a buscar (se considera solo la primera si se pasa más de una).
+        cadena (str): Texto a buscar (puede ser una letra o más de un carácter).
 
     Retorna:
-        List[int]: Lista de índices donde aparece la letra.
+        List[int]: Lista de índices donde aparece la cadena.
     """
-    letra = letra[0]
-    indices: List[int] = []
+    if not cadena:
+        return []
 
-    for i, caracter in enumerate(frase):
-        if caracter.lower() == letra.lower():
+    indices: List[int] = []
+    longitud = len(cadena)
+
+    for i in range(len(frase) - longitud + 1):
+        if frase[i:i+longitud].lower() == cadena.lower():
             indices.append(i)
 
     return indices
@@ -22,5 +26,5 @@ def encontrar_indices(frase: str, letra: str) -> List[int]:
 
 if __name__ == "__main__":
     frase_ingresada: str = input("Ingrese una frase: ")
-    letra_ingresada: str = input("Ingrese una letra a buscar: ")
-    print(encontrar_indices(frase_ingresada, letra_ingresada))
+    cadena_ingresada: str = input("Ingrese una letra o subcadena a buscar: ")
+    print(encontrar_indices(frase_ingresada, cadena_ingresada))

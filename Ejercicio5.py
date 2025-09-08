@@ -9,14 +9,18 @@ def clasificar_numero(numero: int) -> str:
         str: Texto indicando si es par o impar y si es múltiplo de 5.
     """
     resultado: str = "Par" if numero % 2 == 0 else "Impar"
-    if numero % 5 == 0:
-        return f"{resultado} y múltiplo de 5"
+    if numero % 5 == 0 and resultado == "Par":
+        return "Par y múltiplo de 5"
+    elif numero % 5 == 0 and resultado == "Impar":
+        return "Impar y múltiplo de 5"
     return resultado
 
 
 if __name__ == "__main__":
+ while True:
     try:
         numero_ingresado: int = int(input("Ingrese un número: "))
         print(clasificar_numero(numero_ingresado))
+        break
     except ValueError:
         print("Debe ingresar un valor válido.")

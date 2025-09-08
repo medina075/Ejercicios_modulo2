@@ -13,6 +13,7 @@ def jugar(jugador: str, computadora: str | None = None) -> tuple[str, str, str]:
     jugador = jugador.lower()
     if jugador not in opciones:
         raise ValueError("Opcion no valida use piedra papel o tijeras")
+        return "Opcion no valida use piedra papel o tijeras"
 
     if computadora is None:
         computadora = random.choice(opciones)
